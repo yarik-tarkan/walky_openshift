@@ -6,5 +6,5 @@ setup(name='YourAppName',
       author='Your Name',
       author_email='example@example.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Django==1.5.5','PIL==1.1.7'],
+      install_requires=['Django==1.5.5', 'Pillow==2.4.0'],
      )
