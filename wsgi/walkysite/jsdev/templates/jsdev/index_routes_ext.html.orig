@@ -1,0 +1,82 @@
+{% load jsdev_extras %}
+{% load staticfiles %}
+{% block routes %}
+
+				{% for route_id,route_values in routes_dic.items %}
+				<!-- Первый элемент -->
+<<<<<<< HEAD
+				<div class="row pedestrianRoute" style="margin: 0px 0px 0px 0px; "> 
+							
+					<div id="list item content" class="row list-item" style="margin: 0px 0px 0px 0">
+
+						<!-- Left side information about route -->
+						<div id="routeInfo" class="col-md-9" >
+							
+							<div class="row">
+								<div class="col-md-12">
+									<a class="title-link" href="routes/{{route_id}}" id="{{route_id}}"> <h2>#{{route_id}} {{route_values|get_item:"route_name"}}</h2> </a>	
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-5 col-md-offset-0">
+									<div class="clearfix content-heading" id="start_point">						
+										<!--img class="pull-left img-responsive" src="images/start.png"-->						
+										<h4 alt="Kremlin" title="Kremlin">&nbsp Kremlin &nbsp</h4>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-md-offset-1">
+									<div class="clearfix content-heading" id="distance">
+										<!--img class="pull-left img-responsive" src="images/distance.png"-->
+										<h5>&nbsp {{route_values|get_item:"route_length"}} km &nbsp</h5>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-md-offset-0">
+									<div class="clearfix content-heading" id="duration">
+										<!--img class="pull-left img-responsive" src="images/time.png"-->
+										<h5>&nbsp {{route_values|get_item:"route_duration"}} &nbsp</h5>
+									</div>
+								</div>
+
+=======
+				<div class="col-xs-4 ">
+		            <div class="thumbnail pedestrian_route">
+		            	<div class="img_wrapper">
+			            	<img src="http://placehold.it/400x200" alt="..." />
+			            	<!--img src="http://maps.googleapis.com/maps/api/staticmap?size=400x200&key=AIzaSyCw_KEAGVLG7lDHbZLttt4Ttl93Vamu_l4&path=weight:5|color:blue|enc:wvswFfujaMMq@WwAESEMSeAEYIc@?SGY??FCFEDEDEDGBIBIBI?E?C?E?CAEAC?EACPKjBq@vBw@??wBv@kBp@QJ??CEACCCCCEAIAG?I?O@UHCQOy@e@mCOy@aAkFGa@" alt="..." /-->
+			            </div>
+		            	<div class="caption">
+					        <h3> <a id="{{route_id}}">#{{route_id}} {{route_values|get_item:"route_name"}}</a></h3>
+					        <div class="route_point">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-start"></i> </a>
+					        	<h4 alt="Kremlin" title="Kremlin"> Kremlin </h4>
+					        </div>
+					        <div class="route_point">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-finish"></i> </a>
+					        	<h4 alt="Minina square" title="Minina square"> Minina square </h4>
+					        </div>
+					        <div class="route_info">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-distance"></i> </a>
+					        	<h4> {{route_values|get_item:"route_length"}} km </h4>
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-time"></i> </a>
+					        	<h4> {{route_values|get_item:"route_duration"}} min </h4>
+					        </div>
+					        <div class="route_info">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="glyphicon glyphicon-heart"></i> </a>
+					        	<h4> {{route_values|get_item:"route_likes"}} </h4>
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-user"></i> </a>
+					        	<h4> {{route_values|get_item:"route_author"}} </h4>
+					        </div>
+					        <div class="show_button">
+					        	<a class="btn btn-primary" href="#" role="button">Show route 
+									<i class="glyphicon glyphicon-chevron-right"> </i>
+								</a>
+>>>>>>> origin/master
+							</div>
+				      	</div>
+		            </div>
+		        </div>							
+				{% endfor %}
+			{% endblock routes %}

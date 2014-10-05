@@ -1,0 +1,102 @@
+@font-face {
+	font-family: 'walky_icons';
+<<<<<<< HEAD
+	src:url('../fonts/walky_icons.eot?-tw83cc');
+	src:url('../fonts/walky_icons.eot?#iefix-tw83cc') format('embedded-opentype'),
+		url('../fonts/walky_icons.woff?-tw83cc') format('woff'),
+		url('../fonts/walky_icons.ttf?-tw83cc') format('truetype'),
+		url('../fonts/walky_icons.svg?-tw83cc#walky_icons') format('svg');
+=======
+	src:url('../fonts/walky_icons.eot?m68p2z');
+	src:url('../fonts/walky_icons.eot?#iefixm68p2z') format('embedded-opentype'),
+		url('../fonts/walky_icons.woff?m68p2z') format('woff'),
+		url('../fonts/walky_icons.ttf?m68p2z') format('truetype'),
+		url('../fonts/walky_icons.svg?m68p2z#walky_icons') format('svg');
+>>>>>>> ui_design
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'walky_icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-distance:before {
+	content: "\e600";
+}
+.icon-download:before {
+	content: "\e601";
+}
+.icon-favourite:before {
+	content: "\e602";
+}
+.icon-finish:before {
+	content: "\e603";
+}
+.icon-like:before {
+	content: "\e604";
+}
+.icon-location:before {
+	content: "\e605";
+}
+.icon-share:before {
+	content: "\e606";
+}
+.icon-start:before {
+	content: "\e607";
+}
+.icon-time:before {
+	content: "\e608";
+}
+.icon-user:before {
+	content: "\e609";
+}
+<<<<<<< HEAD
+=======
+.icon-city:before {
+	content: "\e60d";
+}
+>>>>>>> ui_design
+.icon-envelope:before {
+	content: "\e60a";
+}
+.icon-location2:before {
+	content: "\e60b";
+}
+.icon-clock:before {
+	content: "\e60c";
+}
+.icon-user2:before {
+	content: "\e613";
+}
+<<<<<<< HEAD
+.icon-key:before {
+	content: "\e60d";
+}
+.icon-key2:before {
+	content: "\e60e";
+}
+=======
+>>>>>>> ui_design
+.icon-lock:before {
+	content: "\e60f";
+}
+.icon-share2:before {
+	content: "\e610";
+}
+.icon-foursquare:before {
+	content: "\e611";
+}
+.icon-foursquare2:before {
+	content: "\e612";
+}

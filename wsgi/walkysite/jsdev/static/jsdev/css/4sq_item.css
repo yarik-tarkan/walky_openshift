@@ -1,0 +1,65 @@
+body{
+	list-style: none;
+}
+#venues_list{
+	list-style: none;
+		margin: 0px;
+	padding: 0px;
+}
+#venues_list li{
+	background-color: #f3f3f3;
+}
+#venues_list .venue{
+	border-bottom: 1px solid black;
+	margin-top: 7px;
+	padding-bottom: 7px;
+}
+#venues_list .venue:last-child{
+	border-width:0px;
+	margin-bottom:25px;
+}
+.img_wrapper{
+	display:table-cell; 
+	vertical-align: middle;
+}
+.img_wrapper img{
+	vertical-align:middle; 
+	max-height:60px;
+}
+.info_wrapper{
+	display: table-cell; 
+	vertical-align: middle; 
+	padding-left: 7px;
+}
+.info_wrapper .venue_title{
+	font-weight: bold;
+}
+.icon_wrapper{
+	display:table-cell; 
+	vertical-align: middle;
+	padding-right: 20px;
+	font-size: 15px;
+}
+.icon_wrapper .venue_type{
+	width: 21px; 
+	height: 21px;
+}
+.icon_wrapper .venue_type img{
+	-webkit-filter: invert(100%);
+	/* Invert For Firefox*/
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'invert\'><feColorMatrix type=\'matrix\' values=\'-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0\'/></filter></svg>#invert");
+	filter: invert(100%);
+	vertical-align: top;
+	width:100%;
+	height:100%; 
+}
+.icon_wrapper .venue_rating{
+	font-weight: bold;
+}
+.icon_wrapper .venue_link{
+	color: #000000;
+}
+.icon_wrapper .venue_link:hover{
+	color: #428bca;
+}
+

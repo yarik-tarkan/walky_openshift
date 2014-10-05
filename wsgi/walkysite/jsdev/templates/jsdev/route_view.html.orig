@@ -1,0 +1,455 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Route Name @ Walky</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "jsdev/css/bootstrap.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "jsdev/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "jsdev/css/walky_icons.css" %}" rel="stylesheet">
+	<link href="{% static "jsdev/css/route_view.css" %}" rel="stylesheet">
+	<link href="{% static "jsdev/css/route_timeline.css" %}" rel="stylesheet">
+	<!-- Lobster font for the logo -->
+	<!--link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'-->
+	<!--link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'-->
+
+
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  	
+
+  	<div class="container">
+		<header>
+			<div class="row">
+				<div class="col-md-2">
+				 	<div class="logo"> Walky </div>
+				 </div>
+				 <div class="col-md-8">
+				 	<div class="route_info text-center">
+					 	<div class="info_item clearfix content-heading">
+							<!--div id="distance">		</div-->	
+							<button type="button" class="btn btn-default btn-circle" disabled="disabled">
+								<i class="icon-distance"></i>
+							</button>			
+							<div class="route_distance" data-toggle="tooltip" data-placement="bottom" title="2.0 km">&nbsp 2.0 km &nbsp</div>
+						</div>
+						<div class="info_item clearfix content-heading">						
+							<!--div id="duration">		</div-->
+							<button type="button" class="btn btn-default btn-circle"  disabled="disabled">
+								<i class="icon-time"></i>
+							</button>
+							<div class="route_duration" data-toggle="tooltip" data-placement="bottom" title="20 min">&nbsp 20 min &nbsp</div>
+						</div>
+						<div class="info_item clearfix content-heading">
+							<!--div id="likes">		</div-->
+							<button type="button" class="btn btn-default btn-circle" disabled="disabled">
+								<i class="icon-like"></i>
+							</button>						
+							<div class="route_likes" data-toggle="tooltip" data-placement="bottom" title="151">&nbsp 151 &nbsp</div>
+						</div>
+						<div class="info_item clearfix content-heading">
+							<!--div id="user">		</div-->
+							<button type="button" class="btn btn-default btn-circle" disabled="disabled">
+								<i class="icon-user"></i>
+							</button>							
+							<div class="route_user" data-toggle="tooltip" data-placement="right" title="Vasyaaaaaa">&nbsp Vasyaaaaaa &nbsp</div>
+						</div>
+						<div class="info_item clearfix content-heading route_actions" style="margin-left:50px;">
+							<button type="button" class="btn btn-success btn-circle" >
+								<i class="icon-favourite"></i>
+							</button>
+						</div>
+						<div class="info_item clearfix content-heading route_actions">
+							<button type="button" class="btn btn-success btn-circle" >
+								<i class="icon-share"></i>
+							</button>
+						</div>
+						<div class="info_item clearfix content-heading route_actions">
+							<button type="button" class="btn btn-success btn-circle" >
+								<i class="icon-download"></i>
+							</button>
+						</div>						
+					</div>
+				</div>
+
+				<!--div class="col-md-3">
+					<div class="route_actions text-center"> 
+						<button type="button" class="btn btn-default btn-circle" >
+								<i class="icon-favourite"></i>
+						</button>	
+						<button type="button" class="btn btn-default btn-circle" >
+								<i class="icon-share"></i>
+						</button>
+						<button type="button" class="btn btn-default btn-circle" >
+							<i class="icon-download"></i>
+						</button>
+					</div>
+				</div-->
+				<div class="col-md-2">
+					<div class="auth_user_container text-center"> 
+						<a class="btn btn-primary pull-right" role="button" id="login_button"> Log In </a>
+					</div>
+				</div>
+			</div>
+			
+		</header>
+		<div class="row-fluid center-block" id="step_slider_wrapper">
+		  	<div id="step-carousel" class="carousel slide" data-ride="carousel">
+		  		<div class="carousel-inner">
+				    <div class="item active">
+				      	<div class="step-item">
+				      		<!-- First Step (Map) -->
+					      	<!--div class="row"> <div id="first_step" class="col-md-12"-->
+					      		<!-- Map as a background -->
+  								<div id="route_map">	</div>
+								<!-- Main information -->
+								<!--div class="row center-block" style="/*width:100%;height:100px;background-color:white;*/"> </div-->
+							<!--/div> </div-->
+			
+						</div>
+
+					</div>
+					<div class="item">
+						<div id="second_step" class="step-item">
+							
+							<!-- Second Step (Route Timeline) -->
+							<div class="row"> <div class="col-md-12">
+								
+								<div class="row">
+									<div class="col-md-6 col-md-offset-3">
+										<h2 class="route_title"> Route Title </h2>
+									</div>
+								</div>
+								<ul class="timeline">
+									<!-- First point -->
+							        <li class="first_point">
+							          <div class="timeline-badge"><i class="icon-start"></i></div>
+							          <div class="timeline-panel">
+							            <div class="timeline-heading">
+							              <a class="show_details"><h4 class="timeline-title">Mussum ipsum cacilds</h4></a>
+							            </div>
+							            <div class="timeline-body">
+							              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+							            </div>
+							          </div>
+							        </li>
+							        <!-- Middle point -->
+							        <li class="middle_point timeline-inverted">
+							          <div class="timeline-badge"><i class="glyphicon glyphicon-map-marker"></i></div>
+							          <div class="timeline-panel">
+							            <div class="timeline-heading">
+							              <a class="show_details"><h4 class="timeline-title">Mussum ipsum cacilds</h4></a>
+							            </div>
+							            <div class="timeline-body">
+							              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+							              <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.</p>
+							            </div>
+							          </div>
+							        </li>
+
+							        <!-- Advertisment in timeline -->
+							        <li class="advert">
+							          <div class="timeline-panel">
+							            <div class="timeline-heading">
+							              <a class="show_details"><h4 class="timeline-title">Advertisment in timeline</h4></a>
+							            </div>
+							            <div class="timeline-body">
+							              <p>This is the place for your advertisment on our web-site. Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+							            </div>
+							          </div>
+							        </li>
+							        <!-- Last point -->
+							        <li class="last_point">
+							          <div class="timeline-badge"><i class="icon-finish"></i></div>
+							          <div class="timeline-panel">
+							            <div class="timeline-heading">
+							              <a class="show_details"><h4 class="timeline-title">Mussum ipsum cacilds</h4></a>
+							            </div>
+							            <div class="timeline-body">
+							              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+							            </div>
+							          </div>
+							        </li>
+
+
+							    </ul>
+							</div> </div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Side Next Button -->
+		<a id="next_step_button" class="right carousel-control step_button" role="button">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+		<!-- Side Previous Button -->
+		<a id="prev_step_button" class="left carousel-control step_button" role="button">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+	</div>
+
+    
+	
+	<!-- Scroll To Top button -->
+	<div class="scroll-to-top"> </div>	
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script-->
+    <script src="{% static "jsdev/js/jquery.js" %}"></script>
+
+    <script>
+    	//*******
+    	//* Scroll to top script for second step of carousel
+    	//*******
+    	jQuery(document).ready(function() {
+			var offset = 200;
+			var duration = 500;
+			jQuery('#second_step').scroll(function() {
+				if (jQuery(this).scrollTop() > offset) {
+				jQuery('.scroll-to-top').fadeIn(duration);
+				} else {
+					jQuery('.scroll-to-top').fadeOut(duration);
+				}
+			});
+
+			jQuery('.scroll-to-top').click(function(event) {
+				event.preventDefault();
+				jQuery('#second_step').animate({scrollTop: 0}, duration);
+				return false;
+			})
+		});
+    </script>
+
+    <script>
+
+    	//***************
+<<<<<<< HEAD
+		//* Hide and Show timeline eements on title click 
+=======
+		//* Hide and Show timeline elements on title click 
+>>>>>>> ui_design
+		//***************
+    	$('.show_details').click(function(event) {
+    		$(this).closest('.timeline-heading').next('.timeline-body').toggle('fadeIn');
+    	});
+    	
+
+    	//*******
+		//* Parsing route from DB in JSON format and rendering the page
+		//*******
+		$(document).ready(function(){
+			$('.route_user').text(json_obj['user_name']).prop('title', json_obj['user_name']);
+			$('.route_distance').text(json_obj['route_distance'] + ' km').prop('title', json_obj['route_distance'] + ' km');
+			$('.route_duration').text(json_obj['route_duration'] + ' min').prop('title', json_obj['route_duration'] + ' min');
+			
+			$('.route_title').text(json_obj['route_name']);
+			create_timeline();
+	  	});
+
+  		//***************
+		//* Create timeline from JSON dynamicly 
+		//***************
+		function create_timeline(){
+			var n_of_points = json_obj['route_points'].length;
+			//Put last point in timeline left or right if odd or even
+			if(Math.abs(n_of_points) % 2 == 1){
+				$(".last_point").removeClass('timeline-inverted');
+			} else {
+				$(".last_point").addClass('timeline-inverted');
+			}
+
+			$(".first_point").find('.timeline-title').text(json_obj['route_points'][0]['point_name']);
+			$(".first_point").find('.timeline-body').text(json_obj['route_points'][0]['point_description']);
+
+			$(".last_point").find('.timeline-title').text(json_obj['route_points'][n_of_points-1]['point_name']);
+			$(".last_point").find('.timeline-body').text(json_obj['route_points'][n_of_points-1]['point_description']);
+
+			if (n_of_points==2){
+				$(".middle_point").hide();
+			}				
+			else if (n_of_points > 2) {
+				$(".middle_point").find('.timeline-title').text(json_obj['route_points'][1]['point_name']);
+				$(".middle_point").find('.timeline-body').text(json_obj['route_points'][1]['point_description']);
+
+				for (var i = 2; i < n_of_points-1; i++) {
+					$new_li = $(".middle_point").first().clone();
+					$new_li.find('.timeline-title').text(json_obj['route_points'][i]['point_name']);
+					$new_li.find('.timeline-body').text(json_obj['route_points'][i]['point_description']);
+					if(Math.abs(i) % 2 == 1){
+						$new_li.addClass('timeline-inverted');
+					} else {
+						$new_li.removeClass('timeline-inverted');
+					}
+					$($new_li).insertBefore('.last_point');
+				}
+			}
+
+		}
+	</script>
+
+	<script type="text/javascript">
+		//*******
+		//* Stops automatic carousel sliding
+		//*******
+	  	$(document).ready(function() {
+		  	
+		  	$('#step-carousel').carousel({
+			    pause: true,
+			    interval: false
+			});
+
+		  	$('#prev_step_button').hide();
+
+		});
+
+	  	//*******
+		//* Carousel sliding 
+		//*******
+	  	jQuery(function($) {
+			$('#next_step_button').click(function() {
+				$('#step-carousel').carousel('next');
+				$('.timeline').show();
+				$('#next_step_button').hide();
+				$('#prev_step_button').show();
+				if (jQuery('#second_step').scrollTop() > 200) {
+					jQuery('.scroll-to-top').fadeIn(300);
+				}
+			});
+
+			$('#prev_step_button').click(function() {
+				$('#step-carousel').carousel('prev');
+				$('#prev_step_button').hide();
+				$('#next_step_button').show();
+
+				jQuery('.scroll-to-top').fadeOut(300);
+			});
+	    });
+	  
+	</script>
+
+    <script src="{% static "jsdev/js/bootstrap.min.js" %}"></script>
+<<<<<<< HEAD
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+=======
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry&key=AIzaSyCw_KEAGVLG7lDHbZLttt4Ttl93Vamu_l4&sensor=false"></script>
+>>>>>>> ui_design
+    <!--script src="js/scroll-to-top.js"></script-->
+    <!--script src="https://maps.gstatic.com/intl/ru_ru/mapfiles/api-3/17/8/main.js" type="text/javascript"></script-->
+    <script type="text/javascript" src="{% static "jsdev/js/route_from_db.js" %}"></script>
+    <script> var json_obj = //[
+<<<<<<< HEAD
+							{
+							"route_name":"NAMEE",
+							"user_name":"ADMIN",
+							"route_distance":"0.799",
+							"route_duration":10,
+							"route_type":"pedestrian",
+							"route_points":[
+								{
+								"point_id":0,
+								"point_lat":40.73855929950343,
+								"point_lng":-73.78789186477661,
+								"point_name":"N1",
+								"point_description":"D1"
+								},
+								{
+								"point_id":1,
+								"point_lat":40.73756753107997,
+								"point_lng":-73.78499507904053,
+								"point_name":"n2",
+								"point_description":"d2"
+								},
+								{
+								"point_id":2,
+								"point_lat":40.73995750527805,
+								"point_lng":-73.78284931182861,
+								"point_name":"n3",
+								"point_description":"d3"
+								}/*,
+								{
+								"point_id":3,
+								"point_lat":40.74995750528811,
+								"point_lng":-73.77284931152872,
+								"point_name":"n4",
+								"point_description":"d4"
+								},
+								{
+								"point_id":4,
+								"point_lat":40.74895750528811,
+								"point_lng":-73.75284931152872,
+								"point_name":"n5",
+								"point_description":"d5"
+								},
+								{
+								"point_id":5,
+								"point_lat":40.74795750528811,
+								"point_lng":-73.73284931152872,
+								"point_name":"n6",
+								"point_description":"d6"
+								}*/
+							]
+							}
+=======
+								{
+								"route_name":"qw",
+								"user_name":"ADMIN",
+								"route_distance":"3.766",
+								"route_duration":47,
+								"route_type":"pedestrian",
+								"encoded_path":"imuvI{`qjGMHi@^??CqAIiFMkHGkCGeFMyHKqGKmI_@qXCgAGsDKkHK{F?KKwFK{IE{EGcDCmCC}CAYAcBCwCG{DIuEGwA?EGa@MuHIuFIuFGiGEeE??HODGHGLIRG??LJNPHTFXH`@NnA??FSDOFI@C@A@?@AB?HAN?R@???z@?N?^AVAP?R?L???M?S@Q@W?_@???O?{@??SAO?I@C?A@A?A@ABGHENGR??OoAIa@GYIUOQMKQQGGIIKMO]??OkKGsEKcHOaKMsIMyKI_GAaAI_FCsACkCQoLIqFCyBEqB",
+								"route_points":[
+								{
+								"point_id":0,
+								"point_lat":56.31203508628452,
+								"point_lng":43.83768081665039,
+								"point_name":"Waypoint 1",
+								"point_description":""
+								},
+								{
+								"point_id":1,
+								"point_lat":56.31260637415924,
+								"point_lng":43.87063980102539,
+								"point_name":"Waypoint 2",
+								"point_description":""
+								},
+								{
+								"point_id":2,
+								"point_lat":56.31451060536088,
+								"point_lng":43.891239166259766,
+								"point_name":"Waypoint 3",
+								"point_description":""
+								}
+								]
+								}
+>>>>>>> ui_design
+							//]
+	</script>
+  </body>
+</html>

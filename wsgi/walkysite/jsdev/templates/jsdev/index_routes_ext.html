@@ -1,0 +1,53 @@
+{% load jsdev_extras %}
+{% load staticfiles %}
+{% block routes %}
+
+				{% for route_id,route_values in routes_dic.items %}
+				<!-- Первый элемент -->
+				<div class="col-xs-4 ">
+		            <div class="thumbnail pedestrian_route">
+		            	<div class="img_wrapper">
+			            	<!--img src="http://placehold.it/400x200" alt="..." /-->
+			            	<img src="../{{route_values|get_item:'route_image_url'}}" alt="..." />
+			            	<!--img src="http://maps.googleapis.com/maps/api/staticmap?size=400x200&key=AIzaSyCw_KEAGVLG7lDHbZLttt4Ttl93Vamu_l4&path=weight:5|color:blue|enc:wvswFfujaMMq@WwAESEMSeAEYIc@?SGY??FCFEDEDEDGBIBIBI?E?C?E?CAEAC?EACPKjBq@vBw@??wBv@kBp@QJ??CEACCCCCEAIAG?I?O@UHCQOy@e@mCOy@aAkFGa@" alt="..." /-->
+			            </div>
+		            	<div class="caption">
+					        <h3> <a href="routes/{{route_id}}" id="{{route_id}}">#{{route_id}} {{route_values|get_item:"route_name"}}</a></h3>
+					        <div class="route_point">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-start"></i> </a>
+					        	<h4 alt="Kremlin" title="Kremlin"> Kremlin </h4>
+					        </div>
+					        <div class="route_point">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-finish"></i> </a>
+					        	<h4 alt="Minina square" title="Minina square"> Minina square </h4>
+					        </div>
+					        <div class="route_info">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-distance"></i> </a>
+					        	<h4> {{route_values|get_item:"route_length"}} km </h4>
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-time"></i> </a>
+					        	<h4> {{route_values|get_item:"route_duration"}} min </h4>
+					        </div>
+					        <div class="route_info">
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="glyphicon glyphicon-heart"></i> </a>
+					        	<h4> {{route_values|get_item:"route_likes"}} </h4>
+					        	<a class="btn btn-primary btn-circle disabled"> <i class="icon-user"></i> </a>
+					        	<h4> {{route_values|get_item:"route_author"}} </h4>
+					        </div>
+					        <div class="show_button">
+					        	<a class="btn btn-primary" href="routes/{{route_id}}" role="button">Show route 
+									<i class="glyphicon glyphicon-chevron-right"> </i>
+								</a>
+							</div>
+				      	</div>
+		            </div>
+		        </div>
+		        {% empty %}
+		        <!-- If an empty dictionaru is passed -->
+					<div class="col-xs-12 ">
+						<div class="alert alert-info" role="alert">
+							<b>Heads up!</b> There is no routes in this category yet. But you can be the first and 
+							<b>add a new one</b> in the menu above! Or you can choose another category and try to find some routes there :)
+						</div>
+					</div>		
+				{% endfor %}
+			{% endblock routes %}

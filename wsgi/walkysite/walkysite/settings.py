@@ -1,5 +1,8 @@
 # Django settings for walkysite project.
 
+import os
+import urlparse
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -9,17 +12,29 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
-}
+DATABASES = {}
+if 'OPENSHIFT_MYSQL_DB_URL' in os.environ:
+    url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
+
+    DATABASES['default'] = {
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        'USER': url.username,
+        'PASSWORD': url.password,
+        'HOST': url.hostname,
+        'PORT': url.port,
+        }
+elif 'OPENSHIFT_POSTGRESQL_DB_URL' in os.environ:
+    url = urlparse.urlparse(os.environ.get('OPENSHIFT_POSTGRESQL_DB_URL'))
+
+    DATABASES['default'] = {
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        'USER': url.username,
+        'PASSWORD': url.password,
+        'HOST': url.hostname,
+        'PORT': url.port,
+        }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -120,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jsdev',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

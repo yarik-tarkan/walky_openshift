@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+<script> var json_obj = {{ obj_as_json|safe }}; </script>
+<script src="{% static "jsdev/js/jquery.js" %}"></script>
+
+<script src="{% static "jsdev/js/city_info_from_db.js" %}"> </script>
+
+<h1 id = "header">List of cities</h1>
+<input type="text" onkeyup="filter(this)" />
+
+<ul id = "list">
+
+</ul>
+
+</body>
+
+</html>

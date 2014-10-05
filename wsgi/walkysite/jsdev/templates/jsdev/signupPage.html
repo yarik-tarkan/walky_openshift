@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register</title>
+
+		<!-- Bootstrap core CSS —>
+		<!--link href="css/bootstrap.css" rel="stylesheet"-->
+
+		<!-- Custom styles for this template —>
+		<!--link href="css/bootstrap.min.css" rel="stylesheet"-->
+
+	</head>
+	<body>
+		<div class="container">
+			{%csrf_token%}
+			<div class="control-group">
+				<label>Your e-mail:</label>
+				<input type="text" id="user_email" >
+			</div>
+			<div class="control-group">
+				<label>Your name :</label>
+				<input type="text" id="user_name" >
+			</div>
+			
+			<div class="control-group">
+				<label>Password :</label>
+				<input type="password" id="user_password" >
+			</div>		
+
+			<div class="control-group">					
+				<button onclick="Register()" >Register</button>		
+			</div>
+		</div>
+	</body>
+
+	<script src="{% static "jsdev/js/jquery.js" %}"></script>
+	<script src="{% static "jsdev/js/authorisation.js" %}" > </script>
+
+</html>
