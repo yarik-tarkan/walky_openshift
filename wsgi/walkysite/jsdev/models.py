@@ -2,6 +2,7 @@ from django.db import models
 from PIL import Image
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.conf import settings
 
 # Create your models here.
 class RouteInfo(models.Model):
@@ -43,7 +44,7 @@ class RouteImages(models.Model):
 			import urllib, os
 			from jsdev.models import RouteInfo 
 			image_url_base = "http://maps.googleapis.com/maps/api/staticmap?size=400x200&path=weight:5|color:blue|enc:"
-			file_save_dir = "media/map_preview/"
+			file_save_dir = os.path.join(settings.MEDIA_ROOT, "map_preview")
 			route = RouteInfo.objects.get(route_id=self.route_id)
 			filename = str(route.route_id)+".jpg"
 			image_url=image_url_base + str(route.route_hash)
