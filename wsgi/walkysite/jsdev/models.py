@@ -49,7 +49,8 @@ class RouteImages(models.Model):
 			filename = str(route.route_id)+".jpg"
 			image_url=image_url_base + str(route.route_hash)
 			print image_url
-			f = open(os.path.join(file_save_dir, filename), 'wb')
+			#f = open(os.path.join(file_save_dir, filename), 'wb')
+			f = open(os.path.join("var/lib/openshift/543113c6500446f719001953/app-root/runtime/repo/wsgi/walkysite/", file_save_dir, filename), 'wb')
 			f.write( urllib.urlopen(image_url).read() )
 			f.close();
 			print "written"
